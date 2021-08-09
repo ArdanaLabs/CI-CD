@@ -10,7 +10,7 @@ in {
     pkgs = import ../pkgs.nix {};
   in {
     imports = [
-      (import ../box/ardana-ci { inherit config pkgs resources; })
+      (import ./box/ardana-ci { inherit config pkgs resources; })
     ];
   };
 }

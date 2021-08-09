@@ -31,7 +31,7 @@ in {
     inherit shellInit;
   };
 
-  environment.systemPackages = with pkgs; [ htop vim git bpytop ];
+  environment.systemPackages = with pkgs; [ htop vim git ];
 
   security = {
     sudo = {
@@ -92,7 +92,7 @@ in {
       ┃    result in civil and/or criminal penalties. All activities performed on this
       ┃    device are logged and monitored.
       ┃
-      ┃    Platonic.Systems | Ageto Energy
+      ┃    Platonic.Systems | Project Ardana
       ┖
 
     '';
