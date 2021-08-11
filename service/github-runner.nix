@@ -3,7 +3,7 @@
     github-runner = {
       enable = true;
       name = "Ardana-CI";
-      url = "https://github.com/ArdanaLabs/DanaSwap";
+      url = "https://github.com/ArdanaLabs";
       inherit tokenFile;
     };
   };
