@@ -14,11 +14,9 @@ in assert github-runner-token-contents != ""; {
     ../base.nix
     ./configuration.nix
     ../../service/nix.nix
-    (import ../../service/github-runner.nix { tokenFile = "/run/keys/${github-runner-token-name}"; })
-  ];
-  environment.systemPackages = with pkgs; [
-    stack
-    psmisc
-    vim
+    (import ../../service/github-runner.nix {
+      tokenFile = "/run/keys/${github-runner-token-name}";
+      inherit pkgs;
+    })
   ];
 }
