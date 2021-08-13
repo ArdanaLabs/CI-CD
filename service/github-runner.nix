@@ -1,10 +1,17 @@
 {pkgs, tokenFile}: {
   services = {
     github-runner = {
-      enable = true;
+      enable = false;
       name = "Ardana-CI";
       url = "https://github.com/ArdanaLabs";
       extraPackages = with pkgs; [
+        bash
+        coreutils
+        gnutar
+        glibc
+        gzip
+        git
+        curl
         stack
         xz
         hlint
