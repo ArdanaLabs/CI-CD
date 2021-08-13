@@ -1,0 +1,18 @@
+stages:
+  - build
+
+nix:
+  stage: build
+  script:
+  - source dummy-env.sh
+  - eval `ssh-agent -s`
+  - ssh-add /run/keys/build-platonic-systems-private
+  - nix-env -iA nixos.nixops -I nixpkgs=channel:nixos-21.05
+  - which nixops; nixops --version
+  - nixops destroy --all && nixops delete --all
+  - nixops create -d ardana-ci realm.nix
+  - nixops deploy -d ardana-ci -I nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz
+  - nixops destroy --all && nixops delete --all
+
+  artifacts:
+    untracked: true
