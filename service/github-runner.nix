@@ -34,6 +34,7 @@ in
                 haskellPackages.fourmolu
                 openssh
                 nixops
+                which
               ];
               tokenFile = token;
             };
