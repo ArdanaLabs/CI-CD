@@ -30,6 +30,8 @@
                  xz
                  hlint
                  haskellPackages.fourmolu
+                 openssh
+                 nixops
                ];
                tokenFile = token;
              };
