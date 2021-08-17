@@ -1,0 +1,24 @@
+name: Continuous Integration
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: nix check
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository to $GITHUB_WORKSPACE
+      - uses: actions/checkout@v2
+
+      - name: dry run
+        run: |
+          source dummy-env.sh
+          ssh-add /run/keys/deploy
+          nix-env -iA nixos.nixops -I nixpkgs=channel:nixos-21.05
+          which nixops; nixops --version
+          nixops destroy --all && nixops delete --all
+          nixops create -d ardana-ci realm.nix
+          nixops deploy -d ardana-ci -I nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz --dry-run
+          nixops destroy --all && nixops delete --all
