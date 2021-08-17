@@ -1,5 +1,5 @@
 { pkgs, config, resources, ... }: let
-  users = import ../users.nix { inherit pkgs; };
+  users = import ../users.nix;
 
   inherit (pkgs.lib.attrsets) mapAttrsToList;
   inherit (pkgs.lib.strings) concatMapStringsSep;
@@ -92,7 +92,7 @@ in {
       ┃    result in civil and/or criminal penalties. All activities performed on this
       ┃    device are logged and monitored.
       ┃
-      ┃    Platonic.Systems | Project Ardana
+      ┃    Platonic.Systems | Ardana Labs
       ┖
 
     '';

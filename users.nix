@@ -1,4 +1,4 @@
-{ pkgs }: {
+{
   "chloe.kever" = {
     description = "Chloe Kever";
     extraGroups = [ "wheel" ];  # Wheel is required for deploy
@@ -33,6 +33,7 @@
     useDefaultShell = true;
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4QHH0bsyIcuSQDBUBtgmqlRHlfdO8PBY+5ReaXj/7N morgan@ripley"
+      "sh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0olgOUsA5OjNlRHMsIqaXMWA2/7FfkUl8MvCNYqmcC morgan@morgan-ThinkPad-E15"
     ];
   };
 }
