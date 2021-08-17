@@ -14,7 +14,6 @@ jobs:
           source dummy-env.sh
           eval "$(ssh-agent -s)"
           ssh-add /build-key
-          nix-env -iA nixos.nixops -I nixpkgs=channel:nixos-21.05
           which nixops; nixops --version
           nixops destroy --all && nixops delete --all
           nixops create -d ardana-ci realm.nix
