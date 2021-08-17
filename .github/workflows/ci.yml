@@ -13,7 +13,7 @@ jobs:
       - run: |
           source dummy-env.sh
           eval "$(ssh-agent -s)"
-          echo $WHOAMI
+          whoami
           ssh-add /run/keys/deploy
           nix-env -iA nixos.nixops -I nixpkgs=channel:nixos-21.05
           which nixops; nixops --version
