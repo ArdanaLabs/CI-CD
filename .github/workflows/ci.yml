@@ -12,6 +12,7 @@ jobs:
       - uses: actions/checkout@v2
       - run: |
           source dummy-env.sh
+          eval "$(ssh-agent -s)"
           ssh-add /run/keys/deploy
           nix-env -iA nixos.nixops -I nixpkgs=channel:nixos-21.05
           which nixops; nixops --version
