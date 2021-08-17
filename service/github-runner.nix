@@ -1,9 +1,16 @@
-{pkgs, tokenFile}: let token = "/runner-token"; in
+{pkgs, tokenFile, buildFile}:
+let token = "/runner-token";
+    build = "/build-key";
+in
 { containers = builtins.foldl' (acc: num: acc // { ${"Ardana-CI-Container-${num}"} = {
       autoStart = true;
       bindMounts = {
         ${token} = {
           hostPath = tokenFile;
+          isReadOnly = true;
+        };
+        ${build} = {
+          hostPath = buildFile;
           isReadOnly = true;
         };
         "/nix" = {
