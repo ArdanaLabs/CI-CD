@@ -23,5 +23,5 @@ jobs:
 
           nixops destroy --all && nixops delete --all
           nixops create -d ardana-ci realm.nix
-          nixops deploy -d ardana-ci
+          nixops ssh -d ardana-ci ardana-ci -v
           nixops destroy --all && nixops delete --all
