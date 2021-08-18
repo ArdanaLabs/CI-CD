@@ -14,6 +14,7 @@ jobs:
       - run: |
           export NIX_PATH=nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz
           export NIXOPS_STATE=$GITHUB_WORKSPACE/nixops-state.nixops
+          export HOME=$HOME
 
           source dummy-env.sh
           eval "$(ssh-agent -s)"
