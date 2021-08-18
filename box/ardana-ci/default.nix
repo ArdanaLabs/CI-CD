@@ -26,7 +26,7 @@ let
 in assert all (key: key.contents != "") (attrValues keys);
 {
   deployment = {
-    targetHost = "138.68.57.54";
+    targetHost = import ../../ip.nix;
     alwaysActivate = true;
     keys = foldWithKey (acc: name: key: acc //
       { ${name} = {

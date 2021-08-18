@@ -19,7 +19,5 @@ jobs:
           source dummy-env.sh
           eval "$(ssh-agent -s)"
           ssh-add /build-key
-          ssh-keyscan 138.68.57.54 > $GITHUB_WORKSPACE/known_hosts
-          cat $GITHUB_WORKSPACE/known_hosts
-          ssh root@138.68.57.54 -v -o UserKnownHostsFile=$GITHUB_WORKSPACE/known_hosts
+          ssh root@138.68.57.54 -v
 
