@@ -18,6 +18,7 @@ jobs:
           source dummy-env.sh
           eval "$(ssh-agent -s)"
           ssh-add /build-key
+          mkdir ~/.ssh
           ssh-keyscan 138.68.57.54 > ~/.ssh/known_hosts
 
           nixops destroy --all && nixops delete --all
