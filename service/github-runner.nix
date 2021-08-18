@@ -36,7 +36,10 @@
           systemd.services.build-key-permissions = {
             serviceConfig.Type = "oneshot";
             wantedBy = [ "default.target" "github-runner.service" ];
-            script = "chown github-runner ./build-key";
+            script = ''
+              chown github-runner ./build-key
+              chmod 600 ./build-key
+            '';
           };
         };
       };
