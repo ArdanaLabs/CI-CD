@@ -6,7 +6,7 @@
           hostPath = "/nix";
           isReadOnly = false;
         };
-      } // foldWithKey (acc: name: key: { "/${name}".hostPath = key.path; }) {} keys;
+      } // foldWithKey (acc: name: key: acc // { "/${name}".hostPath = key.path; }) {} keys;
       config = _:
         { services = {
             github-runner = {
