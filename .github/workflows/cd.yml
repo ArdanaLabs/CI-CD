@@ -1,7 +1,8 @@
 name: Continuous Delivery
 on:
   push:
-    [ master ]
+    branches:
+      - master
   workflow_dispatch:
 
 jobs:
