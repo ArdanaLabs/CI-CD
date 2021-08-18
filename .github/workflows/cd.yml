@@ -20,6 +20,8 @@ jobs:
           ssh-add /build-key
           mkdir -p ~/.ssh
           ssh-keyscan 138.68.57.54 > ~/.ssh/known_hosts
+          cat ~/.ssh/known_hosts
+          echo $HOME ~/.ssh/known_hosts
 
           ssh root@138.68.57.54 -v
 
