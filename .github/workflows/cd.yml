@@ -14,8 +14,9 @@ jobs:
           source dummy-env.sh
           eval "$(ssh-agent -s)"
           ssh-add /build-key
+          export NIX_PATH=nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz
           which nixops; nixops --version
           nixops destroy --all && nixops delete --all
           nixops create -d ardana-ci realm.nix
-          nixops deploy -d ardana-ci -I nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz
+          nixops deploy -d ardana-ci
           nixops destroy --all && nixops delete --all
