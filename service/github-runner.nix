@@ -1,6 +1,7 @@
 { pkgs, keys, foldWithKey }:
 { containers = builtins.foldl' (acc: num: acc // { ${"Ardana-CI-Container-${num}"} = {
     autoStart = true;
+    ephemeral = true;
     bindMounts = {
       "/nix" = {
         hostPath = "/nix";
@@ -30,19 +31,20 @@
               nixops
               which
             ];
-            tokenFile = "/github-runner-token";
+            tokenFile = "/github-runner-token-raw";
           };
           openssh.knownHosts.${import ../ip.nix}.publicKey =
             "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJkX4gVJdpVGFYOmdRCj8lgho14DhSEzaViWXYM3em31";
         };
         systemd.services.build-key-permissions = {
           serviceConfig.Type = "oneshot";
-          wantedBy = [ "default.target" "github-runner.service" ];
+          wantedBy = [ "default.target" ];
+          after = [ "github-runner.service" ];
           script = pkgs.lib.concatMapStringsSep "\n" (name:
           ''
-            cp ./${name}-raw ./${name}
-            chown github-runner ./${name}
-            chmod 600 ./${name}
+            cp /${name}-raw /${name}
+            chown github-runner /${name}
+            chmod 600 /${name}
           '') (builtins.attrNames keys);
         };
       };
