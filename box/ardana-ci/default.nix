@@ -1,60 +1,46 @@
 { config, pkgs, resources, ... }:
 let
+  inherit (builtins) filter foldl' all attrValues attrNames;
+  keys =
+    { github-runner-token = {
+        path = atRun "github-runner-token";
+        contents = builtins.getEnv "GITHUB_RUNNER_TOKEN";
+        permissions = "655";
+      };
 
-  github-runner-token = rec {
-    name = "github-runner-token";
-    path = atRun name;
-    contents = builtins.getEnv "GITHUB_RUNNER_TOKEN";
-  };
+      cache-key = {
+        path = atRun "cache-key";
+        contents = builtins.getEnv "CACHE_KEY";
+      };
 
-  cache-key = rec {
-    name = "cache-key";
-    path = atRun name;
-    contents = builtins.getEnv "CACHE_KEY";
-  };
-
-  build-key = rec {
-    name = "build-key";
-    path = atRun name;
-    contents = builtins.getEnv "BUILD_KEY";
-  };
+      build-key = {
+        path = atRun "build-key";
+        contents = builtins.getEnv "BUILD_KEY";
+      };
+    };
 
   atRun = key: "/run/keys/${key}";
 
-in assert github-runner-token.contents != "";
-   assert cache-key.contents != "";
-   assert build-key.contents != "";
+  foldWithKey = f: i: xs: foldl' (acc: x: f acc x xs.${x}) i (attrNames xs);
+
+in assert all (key: key.contents != "") (attrValues keys);
 {
   deployment = {
     targetHost = "138.68.57.54";
     alwaysActivate = true;
-    keys = {
-      ${github-runner-token.name} = {
-        text = github-runner-token.contents;
-        permissions = "655";
-      };
-      ${cache-key.name} = {
-        text = cache-key.contents;
-        permissions = "600";
-      };
-      ${build-key.name} = {
-        text = build-key.contents;
-        permissions = "600";
-      };
-    };
+    keys = foldWithKey (acc: name: key: acc //
+      { ${name} = {
+          text = key.contents;
+          permissions = key.permissions or "600";
+        };
+      }) {} keys;
   };
   imports = [
     ../base.nix
     ./configuration.nix
-    (import ../../service/nix.nix {
-      cache-key = cache-key.path;
-      inherit pkgs;
-    })
-    (import ../../service/github-runner.nix {
-      tokenFile = github-runner-token.path;
-      buildFile = build-key.path;
-      inherit pkgs;
-    })
+    (import ../../service/nix.nix           { inherit pkgs; inherit (keys) cache-key; })
+    (import ../../service/github-runner.nix { inherit keys pkgs foldWithKey; })
   ];
-  users.users.root.openssh.authorizedKeys.keys = [ build-key.contents ];
+  users.users.root.openssh.authorizedKeys.keys =
+    [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBW7m5/g+hC+KqUID/OQtXL+cGF8Y/6O63HwVFEFrqUo root@ardana-ci" ];
 }

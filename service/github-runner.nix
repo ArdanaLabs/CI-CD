@@ -1,18 +1,12 @@
-{pkgs, tokenFile, buildFile}:
-let token = "/runner-token";
-    build-raw = "/build-key-raw";
-    build = "/build-key";
-in
+{ pkgs, keys, foldWithKey }:
 { containers = builtins.foldl' (acc: num: acc // { ${"Ardana-CI-Container-${num}"} = {
       autoStart = true;
       bindMounts = {
-        ${token}.hostPath = tokenFile;
-        ${build-raw}.hostPath = buildFile;
         "/nix" = {
           hostPath = "/nix";
           isReadOnly = false;
         };
-      };
+      } // foldWithKey (acc: name: key: { "/${name}".hostPath = key.path; }) {} keys;
       config = _:
         { services = {
             github-runner = {
@@ -36,16 +30,13 @@ in
                 nixops
                 which
               ];
-              tokenFile = token;
+              tokenFile = "/github-runner-token";
             };
           };
           systemd.services.build-key-permissions = {
             serviceConfig.Type = "oneshot";
             wantedBy = [ "default.target" "github-runner.service" ];
-            script = ''
-              cat ${build-raw} > ${build}
-              chown github-runner ${build}
-            '';
+            script = "chown github-runner ./build-key";
           };
         };
       };

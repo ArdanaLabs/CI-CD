@@ -1,0 +1,21 @@
+name: Continuous Delivery
+on:
+  push:
+    [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: deploy self
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          source dummy-env.sh
+          eval "$(ssh-agent -s)"
+          ssh-add /build-key
+          which nixops; nixops --version
+          nixops destroy --all && nixops delete --all
+          nixops create -d ardana-ci realm.nix
+          nixops deploy -d ardana-ci -I nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz
+          nixops destroy --all && nixops delete --all
