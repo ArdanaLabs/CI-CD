@@ -16,6 +16,7 @@ jobs:
           source dummy-env.sh
           eval "$(ssh-agent -s)"
           ssh-add /build-key
+          ssh-keyscan 138.68.57.54 > ~/.ssh/known_hosts
           nixops destroy --all && nixops delete --all
           nixops create -d ardana-ci realm.nix
           nixops deploy -d ardana-ci --dry-run
