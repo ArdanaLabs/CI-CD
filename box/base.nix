@@ -92,7 +92,7 @@ in {
       ┃    result in civil and/or criminal penalties. All activities performed on this
       ┃    device are logged and monitored.
       ┃
-      ┃    Platonic.Systems | Ardana Labs
+      ┃    Ardana Labs | Platonic.Systems
       ┖
 
     '';
