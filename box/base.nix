@@ -7,6 +7,7 @@
   inherit (pkgs.lib) mkForce mkDefault mkOverride;
   inherit (builtins) concatMap fetchTarball;
 
+  # Help the shell be more usable
   shellInit = ''
     # Prevent profile processing from being interrupted
     trap "" 1 2 3 15
@@ -15,6 +16,7 @@
     readonly TMOUT
     export TERM=xterm
   '';
+
 in {
   imports = [
     <nixpkgs/nixos/modules/profiles/headless.nix>
@@ -59,10 +61,6 @@ in {
       passwordAuthentication = mkDefault false;
     };
     locate.enable = true;
-    # fail2ban = mkDefault {
-    #   enable = true;
-    #   ignoreIP = unique (users.publicIPs ++ mapAttrsToList (_: v: v.deployment.targetHost) resources.machines);
-    # };
     timesyncd                  = {
       enable                 = true;
       servers                = [
@@ -80,8 +78,11 @@ in {
   users = {
     mutableUsers = mkDefault false;
     users = {
+
+      # Eveyone in user.nix can deploy and therefore is root
       root.openssh.authorizedKeys.keys = mkDefault (flatten (mapAttrsToList (_: v: v.openssh.authorizedKeys.keys or []) users));
     } // users;
+
     motd = mkDefault ''
 
       ┎
