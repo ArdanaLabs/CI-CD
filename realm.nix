@@ -1,7 +1,7 @@
 {
   network = {
     description = "Ardana CI";
-    enableRollback = true;
+    enableRollback = false;
   };
 
   ardana-ci = { config, lib, resources, pkgs, ... }:
