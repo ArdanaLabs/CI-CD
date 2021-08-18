@@ -3,6 +3,7 @@
 Currently offering:
 
 - GitHub Actions
+- Multiple Runners
 - Nix based local build cacheing
 - Nix binary cache over ssh
 - Automatic self deployment via CD
