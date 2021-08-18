@@ -14,10 +14,11 @@ jobs:
       - run: |
           export NIX_PATH=nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz
           export NIXOPS_STATE=$GITHUB_WORKSPACE/nixops-state.nixops
-          export HOME=$HOME
-
           source dummy-env.sh
           eval "$(ssh-agent -s)"
           ssh-add /build-key
-          ssh root@138.68.57.54 -v
+          nixops destroy --all && nixops delete --all
+          nixops create -d ardana-ci realm.nix
+          nixops deploy -d ardana-ci
+          nixops destroy --all && nixops delete --all
 
