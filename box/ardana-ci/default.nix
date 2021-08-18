@@ -1,6 +1,8 @@
 { config, pkgs, resources, ... }:
 let
   inherit (builtins) filter foldl' all attrValues attrNames;
+
+  # Collect keys from the Environment
   keys =
     { github-runner-token = {
         path = atRun "github-runner-token";
@@ -23,11 +25,14 @@ let
 
   foldWithKey = f: i: xs: foldl' (acc: x: f acc x xs.${x}) i (attrNames xs);
 
+  # Assert we have all the keys we need
 in assert all (key: key.contents != "") (attrValues keys);
 {
   deployment = {
     targetHost = import ../../ip.nix;
     alwaysActivate = true;
+
+    # Transform the keys set for Nixops
     keys = foldWithKey (acc: name: key: acc //
       { ${name} = {
           text = key.contents;
@@ -35,12 +40,17 @@ in assert all (key: key.contents != "") (attrValues keys);
         };
       }) {} keys;
   };
+
+  # Merge configurations
   imports = [
     ../base.nix
     ./configuration.nix
     (import ../../service/nix.nix           { inherit pkgs; inherit (keys) cache-key; })
     (import ../../service/github-runner.nix { inherit keys pkgs foldWithKey; })
   ];
+
+  # Provide CI with access to itself
   users.users.root.openssh.authorizedKeys.keys =
+    # This is the public key for the build-key
     [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBW7m5/g+hC+KqUID/OQtXL+cGF8Y/6O63HwVFEFrqUo root@ardana-ci" ];
 }
