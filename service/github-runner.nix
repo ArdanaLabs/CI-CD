@@ -32,9 +32,8 @@
               ];
               tokenFile = "/github-runner-token";
             };
-            openssh.knownHosts =
-              { ${import ../ip.nix} = { publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJkX4gVJdpVGFYOmdRCj8lgho14DhSEzaViWXYM3em31"; };
-              };
+            openssh.knownHosts.${import ../ip.nix}.publicKey =
+              "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJkX4gVJdpVGFYOmdRCj8lgho14DhSEzaViWXYM3em31";
           };
           systemd.services.build-key-permissions = {
             serviceConfig.Type = "oneshot";

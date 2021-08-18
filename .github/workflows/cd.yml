@@ -1,4 +1,4 @@
-name: Continuous Delivery
+name: Continuous Deployment
 on:
   push:
     branches:
@@ -7,14 +7,14 @@ on:
 
 jobs:
   build:
-    name: deploy self
+    name: Deply Self
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - run: |
           export NIX_PATH=nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/ef75aabffb4edc75bf4639af8c454eea267fa253.tar.gz
           export NIXOPS_STATE=$GITHUB_WORKSPACE/nixops-state.nixops
-          source dummy-env.sh
+          source cd-env.sh
           eval "$(ssh-agent -s)"
           ssh-add /build-key
           nixops destroy --all && nixops delete --all
