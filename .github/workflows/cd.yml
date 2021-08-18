@@ -21,7 +21,5 @@ jobs:
           mkdir ~/.ssh
           ssh-keyscan 138.68.57.54 > ~/.ssh/known_hosts
 
-          nixops destroy --all && nixops delete --all
-          nixops create -d ardana-ci realm.nix
-          nixops ssh -d ardana-ci ardana-ci -v
-          nixops destroy --all && nixops delete --all
+          ssh root@138.68.57.54 -v
+
