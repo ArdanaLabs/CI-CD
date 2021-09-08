@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          export NIX_PATH=nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/060d08cc74919d808cd3608e8391ab12c17cfeb2.tar.gz
+          export NIX_PATH=nixpkgs=https://github.com/Fresheyeball/nixpkgs/archive/40e372cbb4c979ac5ea9c41bbb716372c9560b17.tar.gz
           export NIXOPS_STATE=$GITHUB_WORKSPACE/nixops-state.nixops
           source dummy-env.sh
           eval "$(ssh-agent -s)"
