@@ -1,4 +1,4 @@
-# Ardana CI
+# Ardana CI/CD
 
 Currently offering:
 
