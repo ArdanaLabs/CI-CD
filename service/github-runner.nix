@@ -18,7 +18,13 @@
     } // foldWithKey (acc: name: key: acc // { "/${name}-raw".hostPath = key.path; }) {} keys;
 
     config = _:
-      { services = {
+      { nix = {
+          package = pkgs.nixUnstable;
+          extraOptions = ''
+            experimental-features = nix-command flakes
+          '';
+        };
+        services = {
 
           # Enable the GitHub Runner systemd module
           github-runner = {
