@@ -102,4 +102,9 @@ in {
   nix.extraOptions = mkDefault ''
     trusted-users = [ @wheel ]
   '';
+
+  swapDevices = [{
+    device = "/swapfile";
+    size = (1024 * 16) + (1024 * 32); # RAM size + 32 GB
+  }];
 }
