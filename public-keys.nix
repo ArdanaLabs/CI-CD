@@ -19,8 +19,10 @@
 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCYQ003p7fB5ICQehLwhDBomY9WzkNBeijkSw9ADGU+ECrPakeIH3pntUWRJH1W93vKnLqpkn6HLGEXD9MCR0s98uhh8hT7uAYCxQTbEeKT3PYkfz3oe7XaR8rE601sds0ZyFwH7l8cvK97pGr+uhFXAaohiV6VqmLVXhManEjZZ8GfYWBD9BCmIJk43G3OGa5QYFeHqztprXaJNU5dFPv2Uq2C+L6EvfCfkK2OO1BLZgL+Rai5jjyy6k0fcfsxxd9BdGUwqDhcBeyTIzX9rePMugf/xD+6uNRxTU+vjVpGUtFOw6rpgmVyFv9mn3QMNdQBc5hYKVbIQwMNGTzGgcQv srid@nixos"
 # Morgan Thomas (Lenovo Thinkpad Yoga)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOt1UhhOphP0f2fam+r77a2OB6VgPm/MG5ZV6vr+vdEv morgan@lovelace"
-# Morgan Thomas (Lenovo Thinkpad E15)
+# Morgan Thomas (Lenovo Thinkpad E15 #1)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0olgOUsA5OjNlRHMsIqaXMWA2/7FfkUl8MvCNYqmcC morgan@quine"
+# Morgan Thomas (Lenovo Thinkpad E15 #2)
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINR56SZ7Xy3IuqE6+vPxvbTEZnM+owSTdQ+NP/Pj/yUy morgan@godel"
 # Morgan Thomas (HP Envy Desktop)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4QHH0bsyIcuSQDBUBtgmqlRHlfdO8PBY+5ReaXj/7N morgan@ripley"
 ]
