@@ -25,6 +25,5 @@
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINR56SZ7Xy3IuqE6+vPxvbTEZnM+owSTdQ+NP/Pj/yUy morgan@godel"
 # Morgan Thomas (HP Envy Desktop)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4QHH0bsyIcuSQDBUBtgmqlRHlfdO8PBY+5ReaXj/7N morgan@ripley"
-]
 # Morgan Thomas (Sausage Systems salami)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYqOFgsnC8Y8sz0anFonkpweehEq78YhYTHvgthsw7A morgan@morgan-compute.novalocal"
