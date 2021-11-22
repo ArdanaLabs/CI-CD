@@ -20,7 +20,7 @@
 # Morgan Thomas (Lenovo Thinkpad Yoga)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOt1UhhOphP0f2fam+r77a2OB6VgPm/MG5ZV6vr+vdEv morgan@lovelace"
 # Morgan Thomas (Lenovo Thinkpad E15 #1)
-"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA0olgOUsA5OjNlRHMsIqaXMWA2/7FfkUl8MvCNYqmcC morgan@quine"
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDTXuf78jvY1Q2e/9ZCPOgdgj89DnGwwQGOUthRSaeYn morgan@quine"
 # Morgan Thomas (Lenovo Thinkpad E15 #2)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINR56SZ7Xy3IuqE6+vPxvbTEZnM+owSTdQ+NP/Pj/yUy morgan@godel"
 # Morgan Thomas (HP Envy Desktop)
