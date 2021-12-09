@@ -29,4 +29,6 @@
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYqOFgsnC8Y8sz0anFonkpweehEq78YhYTHvgthsw7A morgan@morgan-compute.novalocal"
 # Athan Clark
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/sBL2E8qK4yRKXUPacd1x3fBnzHxEkg27MogyHTdBf athan.clark@gmail.com"
+# Tommy Bidne
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEnZrC2ZncZN1c0fh21icfi+NSoXJDnuyFyh5b0Eb7B1 tbidne@protonmail.com"
 ]
