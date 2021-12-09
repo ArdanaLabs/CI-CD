@@ -27,4 +27,6 @@
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH4QHH0bsyIcuSQDBUBtgmqlRHlfdO8PBY+5ReaXj/7N morgan@ripley"
 # Morgan Thomas (Sausage Systems salami)
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINYqOFgsnC8Y8sz0anFonkpweehEq78YhYTHvgthsw7A morgan@morgan-compute.novalocal"
+# Athan Clark
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIC/sBL2E8qK4yRKXUPacd1x3fBnzHxEkg27MogyHTdBf athan.clark@gmail.com"
 ]
