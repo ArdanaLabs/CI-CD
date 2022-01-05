@@ -32,7 +32,7 @@
 # Tommy Bidne
 "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEnZrC2ZncZN1c0fh21icfi+NSoXJDnuyFyh5b0Eb7B1 tbidne@protonmail.com"
 # Quinn Dougherty (qd@fw)
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBAA5b5OdwoNQQUiMZ2xevGDXxEvhlxQ88C5V1EIRH2D quinnd@tutanota.com
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBAA5b5OdwoNQQUiMZ2xevGDXxEvhlxQ88C5V1EIRH2D quinnd@tutanota.com"
 # Quinn Dougherty (root@fw)
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnmCyUOXHnf7mXG9PLILCdy90ZRpcWJuFTB2GwC8Vgd quinnd@tutanota.com
+"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGnmCyUOXHnf7mXG9PLILCdy90ZRpcWJuFTB2GwC8Vgd quinnd@tutanota.com"
 ]
