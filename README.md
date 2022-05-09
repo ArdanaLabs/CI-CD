@@ -1,3 +1,6 @@
+This machine is currently offline and frozen as this has been replaced superceeded by Herc CI and Cachix
+
+
 # Ardana CI/CD
 
 Currently offering:
